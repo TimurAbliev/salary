@@ -15,9 +15,9 @@ docker compose up
 docker compose exec web alembic upgrade head
 ```
 ### _Ссылки_
-http://localhost:8008/admin admin / admin
-http://localhost:8008/docs
-http://localhost:8008/redoc
+- http://localhost:8008/admin admin / admin
+- http://localhost:8008/docs
+- http://localhost:8008/redoc
 
 ## Второй вариант запуска
 ```sh
@@ -31,6 +31,6 @@ alembic upgrade head
 uvicorn main:app
 ```
 ### _Ссылки_
-http://localhost:8000/admin admin / admin
-http://localhost:8000/docs
-http://localhost:8000/redoc
+- http://localhost:8000/admin admin / admin
+- http://localhost:8000/docs
+- http://localhost:8000/redoc
