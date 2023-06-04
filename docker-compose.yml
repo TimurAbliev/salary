@@ -1,0 +1,35 @@
+version: '3.8'
+
+volumes:
+  db_data:
+  web:
+
+services:
+  db:
+    image: postgres
+    restart: always
+    volumes:
+      - db_data:/var/lib/postgresql/data/
+    env_file:
+      - ./app/.env
+
+  web:
+    build:
+      context: ./app
+      dockerfile: Dockerfile
+    restart: always
+    volumes:
+      - web:/app
+    env_file:
+      - ./app/.env
+    command: uvicorn main:app --host 0.0.0.0
+    environment:
+      - DB_NAME=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - DB_HOST=db
+      - DB_PORT=5432
+    ports:
+      - 8008:8000
+    depends_on:
+      - db
